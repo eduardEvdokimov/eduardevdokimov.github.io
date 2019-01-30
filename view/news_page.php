@@ -23,11 +23,12 @@
             <ul>
             <?php foreach($comments as $comment):
                 if($comment['id_user'] == $_SESSION['user_id'])
-                    $comment['style_login'] = 'green';
+                    if($_SESSION['vhod_check'])
+                        $comment['style_login'] = 'green';
 
                 echo<<<END
                 <li>
-                <p><b style="color: $comment[style_login]">$comment[login_user] </b> <span>$comment[pub_datetime]</span></p>
+                <p><b style="color: $comment[style_login]">$comment[login_user] </b> <span>$comment[pub_date]</span></p>
                 <img src="../$comment[image_puth]" alt="" width="60">
                 <p>$comment[comment]</p>
                 </li>

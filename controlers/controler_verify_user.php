@@ -19,11 +19,11 @@
     {
         require_once '../model/user_login.php';
         $data_user = proverkaEmpty($_REQUEST['login/email'], $_REQUEST['pass']);
-        if(count($data_user) == 2){
+        if(count($data_user) == 2) {
             $rez_vhod = userLogin($data_user);
             if($rez_vhod)
                 header('Location: ../index.php');
             else
                 $data_user['not_vhod'] = 'Не удалось войти. Проверте правильность введенных данных';
-        }
+        }            
     }

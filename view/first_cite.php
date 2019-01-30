@@ -12,7 +12,7 @@
     <h1>Gamebomb</h1>
     <div class="top-nav">
 
-        <?php if($_SESSION['vhod_check'] == false): ?>
+        <?php if($_SESSION['vhod_check'] == false) : ?>
         <a href="view/register.php">Регистрация</a>
         <a href="view/vhod.php">Вход</a>
         <?php else: ?>
@@ -28,7 +28,7 @@
                 echo <<<END
                     <a>
                         <a href="http://localhost/obuch/myBigProject/view/news_page.php?id_news={$v['id']}"><h3>{$v['news_name']}</h3></a>
-                        <p><span>{$v['user_name']}</span> <span>{$v['pub_date']}</span></p>
+                        <p><span>{$v['pub_date']}</span></p>
                         <img src='{$v['image_puth']}' width="50" height="50" alt="Картинка">
                         <p>{$v['news_body']}</p>
                     </div >

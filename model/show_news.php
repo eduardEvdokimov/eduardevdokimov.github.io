@@ -1,6 +1,10 @@
 <?php
     require_once 'connection_db.php';
 
+   
+
+
+
     function getNews($id)
     {
         $con = con();
@@ -50,6 +54,14 @@
                 $rez[$x]['login_user'] = $result_user_db['login'];
             }else{
                 $rez[$x]['login_user'] = 'none';
+            }
+
+            $sql = $conn->prepare("SELECT tema FROM tems WHERE tmp_news_id=".$v['id']);
+            if($sql->execute()){
+                $tema = $sql->fetch(PDO::FETCH_ASSOC);
+                $rez[$x]['tema'] = $tema['tema'];
+            }else{
+                $rez[$x]['tema'] = 'none';
             }
             $x++;
         }

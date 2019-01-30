@@ -9,6 +9,7 @@
             $v['id'],
             $v['id_user'],
             $v['name_news'],
+            $v['tema'],
             $v['body_news'],
             $v['image_puth'],
             $v['offer_date'],
@@ -20,16 +21,18 @@
         private $id_tmp_news;
         private $id_user;
         private $title;
+        private $tema;
         private $body_news;
         private $image_puth;
         private $pub_date;
         private $login_user;
 
-        public function __construct($id_tmp_news, $id_user, $name, $body, $img_puth, $date, $login)
+        public function __construct($id_tmp_news, $id_user, $name, $tema, $body, $img_puth, $date, $login)
         {
             $this->id_tmp_news = $id_tmp_news;
             $this->id_user = $id_user;
             $this->title = $name;
+            $this->tema = $tema;
             $this->body_news = $body;
             $this->image_puth = $img_puth;
             $this->pub_date = $date;
@@ -38,7 +41,6 @@
 
         public function printNews()
         {
-
             return $str;
         }
 
@@ -70,7 +72,37 @@
 
 
     if(isset($_REQUEST['sub'])){
-        echo 'саб';
+        session_start();
+          if(!empty($_REQUEST['name_news']) && !empty($_REQUEST['body_news'])){
+            if($_FILES['image_news']['size'] != 0){
+                require_once '../model/add_news_db.php';
+                $puth = "../image/" . $_FILES['image_news']['name'];
+                if(move_uploaded_file($_FILES['image_news']['tmp_name'], $puth)){
+                    if(addAdminNews(
+                        $_REQUEST['name_news'], 
+                        $_REQUEST['body_news'], 
+                        $_REQUEST['select'], 
+                        $_SESSION['user_id'], 
+                        'image/' . $_FILES['image_news']['name'] )){
+                            $rezult['succes'] = "Новость опубликована";
+                            return $rezult;
+                    }else{
+                        $rezult['error'] = "Не удалось предложить новость. Повторите позже.";
+                        return $rezult;
+                    }
+                }else{
+                    $rezult['error'] = "Не удалось загрузить картинку";
+                    return $rezult;
+                }
+
+            }else{
+                $rezult['error'] = "Загрузите картинку";
+                return $rezult;
+            }
+        }else{
+            $rezult['error'] = "Заполните все поля";
+            return $rezult;
+        }
     }
 
     ob_flush();

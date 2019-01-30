@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 </head>
 <body>
     <form action="<?= $_SERVER['SCRIPT_NAME'] ?>" method="post">

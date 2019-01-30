@@ -4,6 +4,7 @@
 <head>
     <title><?= $_COOKIE['login'] ?></title>
     <meta charset="UTF-8">
+    
 </head>
 <body>
     <?php
