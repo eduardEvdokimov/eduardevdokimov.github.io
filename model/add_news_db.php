@@ -12,6 +12,19 @@
         return $rez;
     }
 
+    function deleteNews($arr_news_db)
+    {
+      $conn = con();
+      foreach($arr_news_db as $v){
+        $sql = $conn->prepare('DELETE FROM  tmp_news WHERE id=?');
+          $result = $sql->execute([$v['id']]);
+      }
+      return true;
+          
+    }
+
+
+
     function addNewsDB($arr_news_db)
     {
         $conn = con();

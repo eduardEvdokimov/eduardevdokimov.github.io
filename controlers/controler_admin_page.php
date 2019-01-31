@@ -1,6 +1,7 @@
 <?php
    // error_reporting(0);
     require_once'../model/show_news.php';
+    require_once '../model/add_news_db.php';
     ob_start();
     $arr_news = getTmpNews();
 
@@ -55,19 +56,88 @@
         }
     }
 
-    if(isset($_REQUEST['add_news'])){
-        if(!empty($_GET['news'])){
-            foreach($_GET['news'] as $v)
-                $arr_selected_id[] = $v;
-            }
-            print_r($arr_selected_id);
-        require_once '../model/add_news_db.php';
-        $rez = getSelctedNews($arr_selected_id);
-        if(addNewsDB($rez)){
-            header('Location: http://' . $_SERVER['HTTP_HOST'] . '/obuch/myBigProject/view/admin_page.php');
-        }else
-            echo 'Не удалось опубликовать новости';
+    if(isset($_REQUEST['sub_add_news'])){
+
+        if(!empty($_GET['add_news'])){
+            foreach($_GET['add_news'] as $v)
+                $select_add_news[] = $v;
         }
+
+        if(!empty($_GET['delete_news'])){
+            foreach($_GET['delete_news'] as $v)
+                $select_delete_news[] = $v;
+        }
+
+        if(isset($select_add_news) && isset($select_delete_news)){
+            foreach (@$select_add_news as $value) {
+                foreach (@$select_delete_news as $val) {
+                    if($value == $val){
+                        $error = '<h1>Хуйня</h1>';
+                        return $error;
+                    }
+                }
+            }
+            
+            
+
+            $rez = getSelctedNews($select_add_news);
+            if(addNewsDB($rez)){
+                header('Location: http://' . $_SERVER['HTTP_HOST'] . '/myBigProject/view/admin_page.php');
+            }else
+                echo 'Не удалось опубликовать новости';
+            
+
+            $rez = getSelctedNews($select_delete_news);
+            if(deleteNews($rez)){
+                header('Location: http://' . $_SERVER['HTTP_HOST'] . '/myBigProject/view/admin_page.php');
+            }else
+                echo 'Не удалось удлить новости';       
+        }else{
+            if(isset($select_add_news)){
+                $rez = getSelctedNews($select_add_news);
+                if(addNewsDB($rez)){
+                    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/myBigProject/view/admin_page.php');
+                }else
+                    echo 'Не удалось опубликовать новости';
+            }
+
+            if(isset($select_delete_news)){
+                $rez = getSelctedNews($select_delete_news);
+                if(deleteNews($rez)){
+                    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/myBigProject/view/admin_page.php');
+                }else
+                    echo 'Не удалось удлить новости'; 
+                }
+        }
+
+
+
+
+
+}
+
+
+
+        
+        
+
+
+         
+
+        
+
+    
+
+
+
+
+
+
+        
+       
+
+
+        
 
 
 

@@ -74,13 +74,14 @@
                             <td><img src='../{$object->image_puth}' width='50' height='50' alt='Картинка'></td>
                             <td>{$object->pub_date}</td>
                             <td>{$object->login_user}</td>
-                            <td><input type="checkbox" name="news[]" value="{$object->getId()}"></td>
-                            <td></td>
+                            <td><input type="checkbox" name="add_news[]" value="{$object->getId()}"></td>
+                            <td><input type="checkbox" name="delete_news[]" value="{$object->getId()}"></td>
                         </tr>                           
 END;
                 endforeach;
                 echo '</table>';
-                echo "<input type='submit' name='add_news' value='Применить' class='submit_add_news'>";
+                if(isset($error)) echo $error;
+                echo "<input type='submit' name='sub_add_news' value='Применить' class='submit_add_news'>";
                 else:
                 echo '<p>Нет добавленных новостей</p>';
                 endif;
