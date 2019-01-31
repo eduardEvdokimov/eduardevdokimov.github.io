@@ -16,7 +16,7 @@
         <a href="view/register.php">Регистрация</a>
         <a href="view/vhod.php">Вход</a>
         <?php else: ?>
-            <a href="http://localhost/obuch/myBigProject/view/personal_page_user.php?id=<?=$_SESSION['user_id'];?>" class='href_name_user'><?=$_COOKIE['login']?></a><br>
+            <a href="http://localhost/myBigProject/view/personal_page_user.php?id=<?=$_SESSION['user_id'];?>" class='href_name_user'><?=$_COOKIE['login']?></a><br>
             <a href='controlers/controler_close_user.php'>Выйти</a>
        <?php endif; ?>
     </div>
@@ -27,7 +27,7 @@
             foreach ($arr_news as $v) {
                 echo <<<END
                     <a>
-                        <a href="http://localhost/obuch/myBigProject/view/news_page.php?id_news={$v['id']}"><h3>{$v['news_name']}</h3></a>
+                        <a href="http://localhost/myBigProject/view/news_page.php?id_news={$v['id']}"><h3>{$v['news_name']}</h3></a>
                         <p><span>{$v['pub_date']}</span></p>
                         <img src='{$v['image_puth']}' width="50" height="50" alt="Картинка">
                         <p>{$v['news_body']}</p>

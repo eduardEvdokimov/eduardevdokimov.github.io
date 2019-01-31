@@ -25,7 +25,7 @@
             $user = $rez->fetch();
             $sql = $conn->prepare('INSERT INTO photo_users (photo_user, vnesh_id) VALUES (?, ?)');
             if($sql->execute([$photo, $user['id']])){
-                mail($email, "Подтверждение аккаунта", 'http://localhost/obuch/myBigProject/view/reg_successful.php?conf=' . $confirm_id);
+                mail($email, "Подтверждение аккаунта", 'http://localhost/myBigProject/view/reg_successful.php?conf=' . $confirm_id);
                 return true;
             } else
                 return 'Проверте правильность введенных данных';

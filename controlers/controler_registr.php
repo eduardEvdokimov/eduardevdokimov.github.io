@@ -7,7 +7,7 @@
             $user = new User($_REQUEST['login'], $_REQUEST['email'], $_REQUEST['pass'], $_FILES['photo']);
             if(($rezult = $user->validateData()) === true){ 
                 if(($rezult = $user->addUser()) === true){
-                    header("Location: http://localhost/obuch/myBigProject/view/confirm_register.php");
+                    header("Location: http://localhost/myBigProject/view/confirm_register.php");
                 }
             }   
         }

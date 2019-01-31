@@ -1,5 +1,5 @@
 <?php  require_once '../controlers/controler_personal_page.php';?>
-<?php $rez['login'] == 'admin' ? header("Location: http://localhost/obuch/myBigProject/view/admin_page.php") : null;?>
+<?php $rez['login'] == 'admin' ? header("Location: http://localhost/myBigProject/view/admin_page.php") : null;?>
 <html>
 <head>
     <title><?= $_COOKIE['login'] ?></title>
