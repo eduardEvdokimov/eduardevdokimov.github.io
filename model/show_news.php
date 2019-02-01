@@ -31,7 +31,7 @@
     {
         $con = con();
         if($tems === 'Все'){
-            $sql = 'SELECT * FROM news';
+            $sql = 'SELECT * FROM news ORDER BY pub_date DESC';
             $rez = $con->query($sql);
             $news = $rez->fetchAll(PDO::FETCH_ASSOC);
             foreach($news as $v){
@@ -49,7 +49,7 @@
             $sql->execute([$tems]);
             $id_news = $sql->fetchAll(PDO::FETCH_ASSOC);
             foreach ($id_news as $value) {
-                $sql = $con->prepare('SELECT * FROM news WHERE id=?');
+                $sql = $con->prepare('SELECT * FROM news WHERE id=? ORDER BY pub_date DESC');
                 $sql->execute([$value['news_id']]);
                 $news[] = $sql->fetch(PDO::FETCH_ASSOC);
             }
