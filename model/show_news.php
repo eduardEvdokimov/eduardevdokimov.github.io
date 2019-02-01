@@ -1,9 +1,15 @@
 <?php
     require_once 'connection_db.php';
-
+    require_once 'comment.php';
    
 
 
+    function addViews($id_news)
+    {
+        $con = con();
+        $sql = $con->prepare("UPDATE news SET views = views + 1 WHERE id = ?");
+        $sql->execute([$id_news]);
+    }
 
     function getNews($id)
     {
@@ -32,6 +38,7 @@
             $sql->execute([$v['user_id']]);
             $rez = $sql->fetch(PDO::FETCH_ASSOC);
             $v['user_name'] = $rez['login'];
+            $v['count_comment']  = @count(getComments($v['id']));
             $result_arr[] = $v;
            //logins[] = $rez['login'];
 

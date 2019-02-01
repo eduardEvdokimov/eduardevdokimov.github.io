@@ -1,5 +1,174 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	width: 100%;
+	height: auto;
+}
+
+body{
+	background-color:  #303030;
+}
+
+header{
+	width: 100%;
+	background: url(../icon/header_bg.png) repeat-x;
+	display: block;
+	height: 100px;
+	box-shadow: 0 2px 8px 3px;
+	
+}
 
 
-i{
-    color: red;
+#logo{
+	float: left;
+	z-index: 1;
+}
+#search{
+	border: 1px silver solid;
+	border-radius: 5px;
+	outline: none;
+	float: left;
+	margin-left: 20%;
+	margin-top: 20px;
+	padding: 1px;
+	background: -webkit-linear-gradient(top, #fff, #b8b0b0);
+	height: 20px;
+	text-align: center;
+	
+	width:300px;
+	font-family: "Comic Sans MS",  sans-serif; 
+}
+::-webkit-input-placeholder{color:#9b000a;}
+
+
+span > i{
+	color: #FF8800;
+	
+}
+
+
+.reg{
+	text-decoration: none;
+	color: #f2ba00;
+	
+	font-family: 'Roboto Slab', sans-serif;
+	font-size: 15px;	
+}
+.reg:hover{
+	border-bottom: 1px solid #f2ba00;
+}
+
+
+
+#tab_reg{
+	float:right;
+	margin-right: 20px;
+	margin-top: 8px;
+	background-color: #4f0305;
+	text-align: center;
+	padding-top: 2.3%;
+	padding-bottom: 2.3%;
+	width: 15%;
+	border-radius: 7px;
+	
+	background-color: rgba(0,0,0, 0.2);
+
+}
+
+#table_div{
+	float: left;
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+	margin-top: 15px;
+	background-color: #4f0305;
+	justify-content: space-around;
+	border-radius: 5px;
+	background-color: rgba(0,0,0, 0.3);
+	width: 35%;
+	margin-left: 13%;
+	padding: 2px;
+}
+
+.table{
+	text-decoration: none;
+	outline: none;
+	font-family: 'Roboto Slab', sans-serif;
+	color: #fff;
+	font-size: 15px;
+	padding: 3px;
+	
+}
+
+.table:hover{
+	border-bottom: 1px solid #fff;
+	
+}
+
+#News{
+	background-color: #303030;
+	border: 10px solid #191919;
+	width: 67%;
+	margin: 0 auto;
+	margin-top: 3%;
+	float: left;
+	border-radius: 10px;
+
+}
+
+#title_block_news{
+	background: #252525;
+	width: 98.4%;
+	padding: 8px;
+	font-size: 20px;
+	font-weight: 400;
+	font-family: 'Roboto Slab', sans-serif;
+	color: white;
+	border-radius: 5px 5px 0 0;
+}
+
+
+.news_content{
+	width: 94%;
+	margin-left: 20px;
+	margin-top: 25px;
+	font-family: 'Roboto Slab', sans-serif;
+	float: left;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #252525;
+	background: #303030;
+
+
+}
+
+.img_news{
+	float: left;
+	margin-right: 15px;
+	width: 180px;
+	height: 180px;
+}
+
+.date_news{
+	color: #aaa;
+	font-size: 12px;
+}
+
+.name_news{
+	color: #f2ba00;
+	font-weight: bold;
+	font-size: 20px;
+	text-decoration: none;
+
+}
+.name_news:hover{
+	text-decoration: underline;
+}
+
+.title_news{
+	color: #aaa;
+	font-size: 15px;
+	margin-top: 10px;
 }

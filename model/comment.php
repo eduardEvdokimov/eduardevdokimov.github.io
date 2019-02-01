@@ -1,6 +1,8 @@
 <?php
     session_start();
     require_once 'connection_db.php';
+    
+    
     function addComment($id_user, $id_news, $comment)
     {
         $conn = con();

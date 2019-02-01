@@ -6,8 +6,12 @@
     require_once('../newFormatDate.php');
 
 
+
     $id_news = $_GET['id_news'];
     
+    addViews($id_news);
+
+
     $news = newFormatDate(getNews($id_news));
     $comments = getComments($id_news);
     if($comments != null)
