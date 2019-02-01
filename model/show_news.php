@@ -27,24 +27,52 @@
     }
 
 
-    function showNews()
+    function showNews($tems)
     {
         $con = con();
-        $sql = 'SELECT * FROM news';
-        $rez = $con->query($sql);
-        $news = $rez->fetchAll(PDO::FETCH_ASSOC);
-        foreach($news as $v){
-            $sql = $con->prepare('SELECT login FROM users WHERE id=?');
-            $sql->execute([$v['user_id']]);
-            $rez = $sql->fetch(PDO::FETCH_ASSOC);
-            $v['user_name'] = $rez['login'];
-            $v['count_comment']  = @count(getComments($v['id']));
-            $result_arr[] = $v;
-           //logins[] = $rez['login'];
+        if($tems === 'Все'){
+            $sql = 'SELECT * FROM news';
+            $rez = $con->query($sql);
+            $news = $rez->fetchAll(PDO::FETCH_ASSOC);
+            foreach($news as $v){
+                $sql = $con->prepare('SELECT login FROM users WHERE id=?');
+                $sql->execute([$v['user_id']]);
+                $rez = $sql->fetch(PDO::FETCH_ASSOC);
+                $v['user_name'] = $rez['login'];
+                $v['count_comment']  = @count(getComments($v['id']));
+                $rezult[] = $v;
+                 
+               //logins[] = $rez['login'];
+            }
+        }else{
+            $sql = $con->prepare('SELECT news_id FROM tems WHERE tema = ?');
+            $sql->execute([$tems]);
+            $id_news = $sql->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($id_news as $value) {
+                $sql = $con->prepare('SELECT * FROM news WHERE id=?');
+                $sql->execute([$value['news_id']]);
+                $news[] = $sql->fetch(PDO::FETCH_ASSOC);
+            }
+            if(!empty($news)){
+                foreach($news as $v){
+                
+                    $sql = $con->prepare('SELECT login FROM users WHERE id=?');
+                    $sql->execute([$v['user_id']]);
+                    $rez = $sql->fetch(PDO::FETCH_ASSOC);
+
+                    $v['user_name'] = $rez['login'];
+                    $v['count_comment']  = @count(getComments($v['id']));
+
+                    $rezult[] = $v;
+                
+                }
+            }
+            
 
         }
-        return $result_arr;
-    }
+        
+       return $rezult; 
+ }
 
     function getTmpNews()
     {

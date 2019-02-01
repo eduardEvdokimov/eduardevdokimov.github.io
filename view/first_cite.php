@@ -24,30 +24,20 @@
              <?php endif; ?>
         </div>
         <div id="table_div" >
-            <a href="Спорт" class="table">Спорт</a>
-            <a href="Животные" class="table">Животные</a>
-            <a href="Политика" class="table">Политика</a>
-            <a href="Технологии" class="table">Технологии</a>
+            <a href="<?= $_SERVER['SCRIPT_NAME'] . '?tems=Все'; ?>" class="table">Все</a>
+            <a href="<?= $_SERVER['SCRIPT_NAME'] . '?tems=Спорт'; ?>" class="table">Спорт</a>
+            <a href="<?= $_SERVER['SCRIPT_NAME'] . '?tems=Животные'; ?>" class="table">Животные</a>
+            <a href="<?= $_SERVER['SCRIPT_NAME'] . '?tems=Политика'; ?>" class="table">Политика</a>
+            <a href="<?= $_SERVER['SCRIPT_NAME'] . '?tems=Технологии'; ?>" class="table">Технологии</a>
         </div>
     </header>
-
-
-
-
-
-
-
-    
-    
 
 
 <div id="News">
     <h2 id='title_block_news'>Последние новости</h2>
     <?php
- 
-        if(!empty($arr_news)){
+        if($arr_news !== false){
             foreach ($arr_news as $v) {
-
                 echo <<<END
                     <div class="news_content">
                         <img src='{$v['image_puth']}' alt="Картинка"  class="img_news">
