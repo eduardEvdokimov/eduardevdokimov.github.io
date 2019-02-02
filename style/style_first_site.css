@@ -25,6 +25,7 @@ header{
 #logo{
 	float: left;
 	z-index: 1;
+	
 }
 #search{
 	border: 1px silver solid;
@@ -111,10 +112,11 @@ span > i{
 #News{
 	background-color: #303030;
 	border: 10px solid #191919;
-	width: 67%;
-	margin: 0 auto;
-	margin-top: 3%;
+	width: 55%;
+	clear: left;
 	float: left;
+	margin: 22.5%;
+	margin-top: 3%;
 	border-radius: 10px;
 
 }
@@ -128,6 +130,12 @@ span > i{
 	font-family: 'Roboto Slab', sans-serif;
 	color: white;
 	border-radius: 5px 5px 0 0;
+}
+
+
+.content_news{
+	height: 160px;
+	overflow: hidden;
 }
 
 
@@ -168,7 +176,10 @@ span > i{
 }
 
 .title_news{
+	
 	color: #aaa;
-	font-size: 15px;
+	font-size: 13px;
 	margin-top: 10px;
+	
+	padding-bottom:  8px;
 }
