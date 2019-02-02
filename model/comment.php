@@ -33,3 +33,32 @@
         } else
             return false;
     }
+
+    function getAllComments(){
+        $conn = con();
+        $sql = 'SELECT * FROM comments';
+        $rez = $conn->query($sql);
+        $rezult = $rez->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($rezult as $value) {
+            $sql = $conn->prepare('SELECT users.login, news.news_name FROM users, news WHERE users.id=? AND news.id=?');
+            $sql->execute([$value['id_user'], $value['id_news']]);
+            $rez = $sql->fetch(PDO::FETCH_ASSOC);
+            $value['login'] = $rez['login'];
+            $value['news_name'] = $rez['news_name'];
+            $rezults [] = $value; 
+        }
+        return $rezults;
+    }
+
+    function deleteComments($array_id)
+    {
+        $conn = con();
+
+        foreach ($array_id as $value) {
+            $sql = $conn->prepare('DELETE FROM comments WHERE id = ?');
+            if(!$sql->execute([$value]))
+                return false;
+        }
+        return true;
+        
+    }

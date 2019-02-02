@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <a href="#"><img src="icon/gamebomb.png" id="logo"></a>
+        <a href="http://localhost/myBigProject/"><img src="icon/gamebomb.png" id="logo"></a>
         <input type="text" id="search" placeholder="Найти что-нибудь..."/>
         
         <div id="tab_reg">
@@ -41,9 +41,11 @@
                 echo <<<END
                     <div class="news_content">
                         <img src='{$v['image_puth']}' alt="Картинка"  class="img_news">
-                        <p class="date_news">{$v['pub_date']}</p>
-                        <a href="http://localhost/myBigProject/view/news_page.php?id_news={$v['id']}" class="name_news" >{$v['news_name']}</a>
-                        <p class="title_news" >{$v['news_body']}</p>
+                        <div class='content_news'>
+                            <p class="date_news">{$v['pub_date']}</p>
+                            <a href="http://localhost/myBigProject/view/news_page.php?id_news={$v['id']}" class="name_news" >{$v['news_name']}</a>
+                            <p class="title_news" >{$v['news_body']}</p>
+                        </div>
                         <span>
                             <i class="fa fa-eye" aria-hidden="true"> {$v['views']}</i>
                             <i class="fa fa-comment-o" aria-hidden="true"> {$v['count_comment']}</i>

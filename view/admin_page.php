@@ -4,21 +4,40 @@
     <title></title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style/admin_page.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+   <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
     <meta http-equiv="Cache-Control" content="no-cache">
     <script src='../jquery.js'></script>
     <script type='text/javascript'>
         $(document).ready(function(){
             $('#add_news').click(function(){
                 $('.form_add_news').css({
-                    'display' : 'block'
+                    'display' : 'inline-block'
                 });
                 $('.block_news').css({
+                    'display' : 'none'
+                });
+                $('.comments').css({
                     'display' : 'none'
                 });
             });
             $('#tmp_news').click(function(){
                 $('.block_news').css({
-                    'display' : 'block'
+                    'display' : 'inline-block'
+                });
+                $('.form_add_news').css({
+                    'display' : 'none'
+                });
+                $('.comments').css({
+                    'display' : 'none'
+                });
+            });
+            $('#comments').click(function(){
+                $('.comments').css({
+                    'display' : 'inline-block'
+                });
+                $('.block_news').css({
+                    'display' : 'none'
                 });
                 $('.form_add_news').css({
                     'display' : 'none'
@@ -31,14 +50,23 @@
     
 </head>
 <body>
-    <nav class='navigation-bar'>
-        <li><h1>Admin Panel</h1></li>
-        <li><button id='add_news'>Добавить новость</button></li>
-        <li><button id='tmp_news'>Предложенные новости</button></li>
-        <li><button id='comments'>Комментарии</button></li>
-    </nav>
+
+    <header>
+        <a href="http://localhost/myBigProject/"><img src="../icon/gamebomb.png" id="logo"></a>
+        <input type="text" id="search" placeholder="Найти что-нибудь..."/>
+        
+        <div id="tab_reg">
+            <p class='title_page'>Панель администратора</p>
+        </div>
+        <div id="table_div" >
+            <button id='add_news'>Добавить новость</button>
+            <button id='tmp_news'>Предложенные новости</button>
+            <button id='comments'>Комментарии</button>
+        </div>
+    </header>
+
     <div class='form_add_news'>
-        <h2>Форма добавления новости</h2>
+        <h2 class='title_block'>Форма добавления новости</h2>
         <form action="<?= $_SERVER['SCRIPT_NAME'] ?>" method="post" enctype="multipart/form-data" id='form_add_news'>
             <label>Название: </label>
             <input type="text" name="name_news" id='title_news' placeholder="Броское, нужно забайтить на просмотр"><br>
@@ -59,7 +87,7 @@
         </form>
     </div>
     <div class="block_news">
-        <h2>Предложенные новости</h2>
+        <h2 class='title_block'>Предложенные новости</h2>
         <form action="<?= $_SERVER['SCRIPT_NAME'] ?>" method="get" enctype="application/x-www-form-urlencoded">
         <?php
             if(!empty($objects)):
@@ -89,6 +117,40 @@ END;
 
         </form>
     </div>
+
+
+
+
+<div class="comments">
+        <h2 class='title_block'>Все оставленные комментарии</h2>
+        <form action="<?= $_SERVER['SCRIPT_NAME'] ?>" method="get" enctype="application/x-www-form-urlencoded">
+        <?php
+            if(!empty($comments)):
+                echo '<table border=1><th>Комментарий</th><th>Пользователь</th><th>Новость</th><th>Дата публикации</th><th>Удалить</th>';
+                foreach ($comments as $value):
+                    echo<<<END
+                         <tr>
+                            <td>{$value['comment']}</td>
+                            <td>{$value['login']}</td>
+                            <td>{$value['news_name']}</td>
+                            <td>{$value['pub_date']}</td>  
+                            <td><input type="checkbox" name="delete_comments[]" value="{$value['id']}"></td>
+                        </tr>                           
+END;
+                endforeach;
+                echo '</table>';
+                if(isset($error)) echo $error;
+                echo "<input type='submit' name='sub_delete_comments' value='Применить' class='submit_add_news'>";
+                else:
+                echo '<p>Нет комментариев</p>';
+                endif;
+?>
+
+        </form>
+    </div>
+
+
+
 </body>
     
 </html>

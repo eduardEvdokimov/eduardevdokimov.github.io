@@ -1,0 +1,288 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	width: 100%;
+	height: auto;
+}
+
+body{
+	background-color:  #303030;
+}
+
+header{
+	width: 100%;
+	background: url(../icon/header_bg.png) repeat-x;
+	display: block;
+	height: 100px;
+	box-shadow: 0 2px 8px 3px;
+	
+}
+
+#logo{
+	float: left;
+	z-index: 1;
+}
+#search{
+	border: 1px silver solid;
+	border-radius: 5px;
+	outline: none;
+	float: left;
+	margin-left: 20%;
+	margin-top: 20px;
+	padding: 1px;
+	background: -webkit-linear-gradient(top, #fff, #b8b0b0);
+	height: 20px;
+	text-align: center;
+	
+	width:300px;
+	font-family: "Comic Sans MS",  sans-serif; 
+}
+::-webkit-input-placeholder{color:#9b000a;}
+
+
+span > i{
+	color: #FF8800;
+	
+}
+
+
+.reg{
+	text-decoration: none;
+	color: #f2ba00;
+	
+	font-family: 'Roboto Slab', sans-serif;
+	font-size: 15px;	
+}
+.reg:hover{
+	border-bottom: 1px solid #f2ba00;
+}
+
+
+
+#tab_reg{
+	float:right;
+	margin-right: 20px;
+	margin-top: 8px;
+	background-color: #4f0305;
+	text-align: center;
+	padding-top: 2.3%;
+	padding-bottom: 2.3%;
+	width: 15%;
+	border-radius: 7px;
+	
+	background-color: rgba(0,0,0, 0.2);
+
+}
+
+
+#table_div{
+	float: left;
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+	margin-top: 15px;
+	background-color: #4f0305;
+	justify-content: space-around;
+	border-radius: 5px;
+	background-color: rgba(0,0,0, 0.3);
+	width: 35%;
+	margin-left: 13%;
+	padding: 2px;
+}
+
+.table{
+	text-decoration: none;
+	outline: none;
+	font-family: 'Roboto Slab', sans-serif;
+	color: #fff;
+	font-size: 15px;
+	padding: 3px;
+	
+}
+
+.table:hover{
+	border-bottom: 1px solid #fff;
+	
+}
+
+.div_news{
+	width: 70%;
+	display: inline-block;
+	margin: 0 auto;
+	margin-top: 5%;
+	background: #191919;
+	padding: 11px;
+	border-radius: 8px;
+}
+
+.div_content_news{
+	width: 96.7%;
+	display: inline-block;
+	background: #252525;
+	padding: 16px;
+}
+
+h1{
+	color: #f2ba00;
+	font-family: 'Roboto', sans-serif;
+	font-size: 26px;
+	padding: 5px;
+}
+
+.login_pubdate{
+	padding: 5px;
+	font-size: 14px;
+}
+
+#login{
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+}
+
+#pub_date{
+	margin-left: 5px;
+	color: #aaa;
+
+}
+
+i{
+	color: #FF8800;
+	margin-left: 16%;
+}
+ 
+.image_news{
+	width: 40%;
+	padding: 5px;
+	padding-right: 18px;
+	float: left;
+
+}
+
+.article{
+	color: #aaa;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	padding: 5px;
+	
+	
+}
+
+h2{
+
+	margin-top: 20px;
+	color: #666666;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	border-bottom: 1px solid #666666;
+}
+.comment_block{
+	width: 100%;
+	float: left;
+	clear: left;
+}
+
+
+
+.comment{
+	width: 100%;
+	height: 80px;
+	border-bottom: 1px solid #333;
+}
+
+.comment > img{
+	float: left;
+	padding: 10px;
+	width: 55px;
+}
+
+.comment > p{
+	padding-top: 10px;
+	font-size: 14px;
+}
+
+.body_comment{
+	margin-top: -10px;
+	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
+	color: #aaa;
+}
+
+.add_comment{
+	margin-top: 10px;
+	width: 100%;
+	height: 100px;
+	border-radius: 8px;
+	background: #303030;
+}
+
+.add_comment > h2{
+	padding: 8px;
+	color: #666666;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	border-bottom: 1px solid #666666;
+	width: 97%;
+	
+	margin:0 auto;
+}
+
+.add_comment > p {
+	padding: 8px;
+	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
+	color: #aaa;
+}
+
+.add_comment > p > a{
+	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	color: #f2ba00;
+}
+
+form{
+	background: #303030;
+	margin-top: 10px;
+	width: 100%;
+	height: 200px;
+	border-radius: 8px;
+
+}
+
+form > p{
+	padding: 9px;
+	font-size: 16px;
+	font-family: 'Roboto', sans-serif;
+	color: #aaa;
+}
+
+textarea{
+	padding: 5px;
+	background: #191919;
+	width: 96.5%;
+	height: 40%;
+	outline: none;
+	color: white;
+	margin: 1%;
+	font-family: 'Roboto', sans-serif;
+}
+
+form > input{
+	float: right;
+	width: 200px;
+	height: 40px;
+	margin-right: 10px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	background: url(../icon/header_bg.png) repeat-x;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+
+}
+

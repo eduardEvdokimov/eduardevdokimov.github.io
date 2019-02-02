@@ -2,6 +2,7 @@
    // error_reporting(0);
     require_once'../model/show_news.php';
     require_once '../model/add_news_db.php';
+    require_once '../model/comment.php';
     ob_start();
     $arr_news = getTmpNews();
 
@@ -16,6 +17,10 @@
             $v['offer_date'],
             $v['login_user']);
     }
+
+    $comments = getAllComments();
+
+   
 
     class News
     {
@@ -109,13 +114,17 @@
                     echo 'Не удалось удлить новости'; 
                 }
         }
-
-
-
-
-
 }
 
+
+if(isset($_REQUEST['sub_delete_comments'])){
+    $id = $_REQUEST['delete_comments'];
+    if(deleteComments($id))
+        echo '+';
+    else
+        echo '-';
+
+}
 
 
         
