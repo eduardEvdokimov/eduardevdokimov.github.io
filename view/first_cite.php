@@ -12,8 +12,10 @@
 <body>
     <header>
         <a href="http://localhost/myBigProject/"><img src="icon/gamebomb.png" id="logo"></a>
-        <input type="text" id="search" placeholder="Найти что-нибудь..."/>
-        
+        <form action='<?= $_SERVER['SCRIPT_NAME']; ?>' method=get>
+            <input type="text" name='request' id="search" placeholder="Найти что-нибудь..."/>
+            <input type='submit' name='search' value='Найти' id='button_search'>
+        </form>
         <div id="tab_reg">
             <?php if($_SESSION['vhod_check'] == false) : ?>
             <a href="view/register.php" class='reg'>Регистрация</a>
@@ -32,13 +34,15 @@
         </div>
     </header>
 
-
+<div class='background_news'>
 <div id="News">
     <h2 id='title_block_news'>Последние новости</h2>
     <?php
-        if($arr_news !== false){
-            foreach ($arr_news as $v) {
-                echo <<<END
+        if($arr_news2 !== false){
+            $count = 0;
+            foreach ($arr_news2 as $v) {
+                if(!empty($v)){
+                    echo <<<END
                     <div class="news_content">
                         <img src='{$v['image_puth']}' alt="Картинка"  class="img_news">
                         <div class='content_news'>
@@ -51,8 +55,38 @@
                             <i class="fa fa-comment-o" aria-hidden="true"> {$v['count_comment']}</i>
                         </span>
                     </div>
+
 END;
+                    $count++;
+                    if($count == 4) break;
+                }else
+                    break;
+                
             }
+            
+echo '</div>';
+echo "<div class='pagin'>";
+            if(isset($step_nazad)){
+                echo "<a href='http://localhost/myBigProject?news_page={$step_nazad}' class='href_number_page'><</a>";
+            }
+            for($count = 1; $count < $count_page + 1; $count++){
+                $style = 'pointer-events: none; cursor: default; color: #191919; background: white;';
+                if(!isset($_GET['news_page']) && $count == 1)
+                        echo "<a href='http://localhost/myBigProject?news_page=1' style='{$style}' class='href_number_page'>1</a>";
+                else{
+                    if($_GET['news_page'] == $count){
+                    echo "<a href='http://localhost/myBigProject?news_page={$count}' style='{$style}' class='href_number_page'>{$count}</a>";
+                }else
+                    echo "<a href='http://localhost/myBigProject?news_page={$count}' class='href_number_page'>{$count}</a>";
+                }
+
+                
+            }
+            
+            if(isset($step_next)){
+                echo "<a href='http://localhost/myBigProject?news_page={$step_next}' class='href_number_page'>></a>";
+            }
+            echo '</div>';
         }
         ?>
 </div>

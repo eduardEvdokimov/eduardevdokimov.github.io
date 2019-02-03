@@ -4,6 +4,24 @@
    
 
 
+    function searchRequest($request)
+    {
+        $conn = con();
+        $request = '%' . $request . '%';
+        $sql = $conn->prepare("SELECT * FROM news WHERE news_name LIKE ?");
+        $sql->execute([$request]);
+
+        $rezult =$sql->fetchAll(PDO::FETCH_ASSOC);
+       
+        return $rezult;
+    }
+
+
+
+
+
+
+
     function addViews($id_news)
     {
         $con = con();
