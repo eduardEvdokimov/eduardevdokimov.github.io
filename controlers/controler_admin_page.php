@@ -120,9 +120,7 @@
 if(isset($_REQUEST['sub_delete_comments'])){
     $id = $_REQUEST['delete_comments'];
     if(deleteComments($id))
-        echo '+';
-    else
-        echo '-';
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/myBigProject/view/admin_page.php');
 
 }
 
