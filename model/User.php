@@ -93,7 +93,7 @@ class User
                     if(is_array($this->photo))
            					$this->photo = $this->addPhoto();
                     if($sql->execute([$this->photo, $id_add_users])) {
-                        mail($this->mail, "Подтверждение аккаунта", 'http://localhost/obuch/myBigProject/view/reg_successful.php?conf=' . $confirm_id);
+                        mail($this->mail, "Подтверждение аккаунта", 'http://localhost/myBigProject/view/reg_successful.php?conf=' . $confirm_id);
                         return true;
                     }else
                         return 'Проверте правильность введенных данных';

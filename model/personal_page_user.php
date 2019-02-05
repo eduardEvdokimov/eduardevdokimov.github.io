@@ -21,6 +21,19 @@
             return false;
     }
 
+    function getUserNewsComment($id_user)
+    {
+        $conn = con();
+        $sql = $conn->prepare('SELECT * FROM news WHERE user_id=? ORDER BY pub_date DESC');
+        $sql->execute([$id_user]);
+        $news = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $sql = $conn->prepare("SELECT COUNT('comment') FROM comments WHERE id_user=?");
+        $sql->execute([$id_user]);
+        $count_comment = $sql->fetch(PDO::FETCH_ASSOC);
+        $rezult = ['news' => $news, 'count_comment' => $count_comment["COUNT('comment')"]];
+        return $rezult;
+    } 
+
     function changeInfo(
         $id_user,
         $login, 
@@ -29,7 +42,8 @@
         $firstname, 
         $lastname, 
         $othestvo, 
-        $dateBirth)
+        $dateBirth,
+        $photo)
     {
         $conn = con();
         //Обновление логина
@@ -54,6 +68,22 @@
                 }
                 
             }
+        }
+        //Обновление фотографии
+        if(!empty($photo['name'])){
+            if(empty($photo['error'])){
+                if($photo['size'] < (1024 * 1024 * 5)){
+                    $puth_photo = 'image/' .  $photo['name'];
+                    if (move_uploaded_file($photo['tmp_name'], '../'. $puth_photo)) {
+                        $sql = $conn->prepare('UPDATE photo_users SET photo_user = ? WHERE vnesh_id = ?');
+                        $sql->execute([$puth_photo, $id_user]);
+                    }else
+                        $rezult['error'] = 'Файл не удалось загрузить';
+                    
+                }else
+                    $rezult['error'] = 'Размер файла не должен превышать 5 Мб';
+            }else
+                $rezult['error'] = 'Файл не удалось загрузить';
         }
         //Обновление или добавления имени
         if(!empty($firstname)){

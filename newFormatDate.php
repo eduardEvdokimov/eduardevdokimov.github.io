@@ -23,6 +23,12 @@
                     $items[] = $v; 
                 }
                 return $items;
+            }elseif(is_string($item)){
+                $date = new DateTime($item);
+                $month = $date->format('M');
+                $finalDate = $date->format('j M Y г');
+                $item = str_replace($month, $arrDate[$month], $finalDate);
+                return $item;
             }else{
                 $date = new DateTime($item['pub_date']);
                 $month = $date->format('M');

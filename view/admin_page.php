@@ -53,7 +53,7 @@
 
     <header>
         <a href="http://localhost/myBigProject/"><img src="../icon/gamebomb.png" id="logo"></a>
-        <input type="text" id="search" placeholder="Найти что-нибудь..."/>
+        
         
         <div id="tab_reg">
             <p class='title_page'>Панель администратора</p>
