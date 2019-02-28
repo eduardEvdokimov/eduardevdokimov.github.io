@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 20 2019 г., 22:21
+-- Время создания: Фев 28 2019 г., 16:49
 -- Версия сервера: 8.0.12
 -- Версия PHP: 7.2.10
 
@@ -41,7 +41,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `comment`, `pub_date`, `id_user`, `id_news`) VALUES
-(23, 'Комментарий', '2019-02-06 14:20:51', 10, 49);
+(23, 'Комментарий', '2019-02-06 14:20:51', 10, 49),
+(24, 'Новый комментарий)', '2019-02-20 19:31:40', 30, 48);
 
 -- --------------------------------------------------------
 
@@ -77,8 +78,9 @@ INSERT INTO `news` (`id`, `news_name`, `news_body`, `image_puth`, `user_id`, `pu
 (45, 'Чтобы было)', 'Первые две строчки интересные, потом вода...', 'image/Hydrangeas.jpg', 10, '2019-02-03 08:56:37', 1),
 (46, 'И еще', 'Первые две строчки интересные, потом вода...', 'image/Penguins.jpg', 10, '2019-02-03 08:56:48', 0),
 (47, 'Еще новость', 'Первые две строчки интересные, потом вода...', 'image/Tulips.jpg', 10, '2019-02-03 09:20:46', 13),
-(48, 'asdsa', 'Первые две строчки интересные, потом вода...', 'image/Tulips.jpg', 10, '2019-02-03 14:18:14', 7),
-(49, 'Очень интересная новость', 'Новость про пингвинов', 'image/Penguins.jpg', 10, '2019-02-06 14:20:32', 19);
+(48, 'asdsa', 'Первые две строчки интересные, потом вода...', 'image/Tulips.jpg', 10, '2019-02-03 14:18:14', 10),
+(49, 'Очень интересная новость', 'Новость про пингвинов', 'image/Penguins.jpg', 10, '2019-02-06 14:20:32', 20),
+(50, 'Новость от космоса746, она очень интресная', 'Первые две строчки интересные, потом вода...Первые две строчки интересные, потом вода...Первые две строчки интересные, потом вода...Первые две строчки интересные, потом вода...Первые две строчки интересные, потом вода...Первые две строчки интересные, потом вода...Первые две строчки интересные, потом вода...Первые две строчки интересные, потом вода...Первые две строчки интересные, потом вода...Первые две строчки интересные, потом вода...', 'image/Hydrangeas.jpg', 30, '2019-02-20 19:32:45', 3);
 
 -- --------------------------------------------------------
 
@@ -105,7 +107,8 @@ INSERT INTO `photo_users` (`id`, `photo_user`, `vnesh_id`) VALUES
 (16, 'image/avtomobili-virtualnyj-tyuning-2015-nigth-912485.jpg', 26),
 (17, 'image/Chrysanthemum.jpg', 27),
 (18, 'image/Jellyfish.jpg', 28),
-(19, 'image/no-user-image.gif', 29);
+(19, 'image/no-user-image.gif', 29),
+(20, 'image/no-user-image.gif', 30);
 
 -- --------------------------------------------------------
 
@@ -142,7 +145,8 @@ INSERT INTO `tems` (`id`, `tema`, `tmp_news_id`, `news_id`) VALUES
 (31, 'Спорт', NULL, 46),
 (32, 'Спорт', NULL, 47),
 (33, 'Спорт', NULL, 48),
-(34, 'Животные', NULL, 49);
+(34, 'Животные', NULL, 49),
+(35, 'Технологии', NULL, 50);
 
 -- --------------------------------------------------------
 
@@ -191,7 +195,8 @@ INSERT INTO `users` (`id`, `login`, `pass`, `email`, `reg_date`, `firstname`, `l
 (26, 'edik3121', '$2y$10$dtsaczY7WMXWxUwY9rAvSO0WFF0zId4GTSUqAs1wywTPiuOsHtRJK', 'eduard3211.evdokimov@inbox.ru', '2019-01-31 11:46:35', NULL, NULL, NULL, NULL, '1'),
 (27, 'Эдуард', '$2y$10$KyaTF4WUT/Obc9BDYatfbO5qJfiOqnlDIhctd9TIS6dmk4P2sco3S', 'eduard@mail.com', '2019-02-01 19:42:07', NULL, NULL, NULL, NULL, '1'),
 (28, 'sniper', '$2y$10$j.zogcyaVNiW42KXNdM6U.lRiANtwpmPZmwFSGOSxyzPdkT.PSEpS', 'sniper@mail.com', '2019-02-05 18:04:13', 'Константин', NULL, NULL, '1970-01-01', '1'),
-(29, '123', '$2y$10$VXYAV17Vq8IDi0.nV7AOVOGzp5.qsHntpsIgDfGuQWPLiqqmpV/nq', '123@mail.com', '2019-02-05 18:15:22', NULL, NULL, NULL, NULL, '5c59d2ba82a9d');
+(29, '123', '$2y$10$VXYAV17Vq8IDi0.nV7AOVOGzp5.qsHntpsIgDfGuQWPLiqqmpV/nq', '123@mail.com', '2019-02-05 18:15:22', NULL, NULL, NULL, NULL, '5c59d2ba82a9d'),
+(30, 'kosmas746', '$2y$10$T.WGf2gIUIgnw.9ObrljGOK9YDxk.gc0ft6N.2OFuczhtCt1akQGi', 'kosmas@inbox.ru', '2019-02-20 19:30:10', NULL, NULL, NULL, NULL, '1');
 
 --
 -- Индексы сохранённых таблиц
@@ -247,37 +252,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT для таблицы `photo_users`
 --
 ALTER TABLE `photo_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT для таблицы `tems`
 --
 ALTER TABLE `tems`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT для таблицы `tmp_news`
 --
 ALTER TABLE `tmp_news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
